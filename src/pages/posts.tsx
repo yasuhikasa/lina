@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth, db } from "../lib/firebaseConfig";
-import { addDoc, collection, query, orderBy, getDocs } from "firebase/firestore";
+import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 interface Post {
@@ -45,6 +45,26 @@ const Post = () => {
     }
   };
 
+  const handleDelete = async (postId: string, postUid: string) => {
+    if (user?.uid !== postUid) {
+      alert("他のユーザーの投稿を削除することはできません。");
+      return;
+    }
+
+    const confirmDelete = window.confirm("本当にこの投稿を削除してよろしいですか？");
+    if (!confirmDelete) {
+      return; // キャンセルされた場合、削除処理を中断
+    }
+
+    try {
+      await deleteDoc(doc(db, "posts", postId));
+      fetchPosts(); // 削除後に最新の投稿を再取得して表示
+    } catch (error) {
+      console.error("投稿の削除に失敗しました:", error);
+      alert("投稿の削除に失敗しました。");
+    }
+  };
+
   useEffect(() => {
     fetchPosts(); // ページロード時に投稿を取得
   }, []);
@@ -67,9 +87,9 @@ const Post = () => {
           <div key={post.id}>
             <p>{post.content}</p>
             <p>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
-            {/* {user?.uid === post.uid && (
-              <button onClick={() => handleDelete(post.id)}>削除</button>
-            )} */}
+            {user?.uid === post.uid && (
+              <button onClick={() => handleDelete(post.id, post.uid)}>削除</button>
+            )}
           </div>
         ))}
       </div>
@@ -78,3 +98,4 @@ const Post = () => {
 };
 
 export default Post;
+
