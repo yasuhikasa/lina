@@ -4,6 +4,8 @@ import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } f
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from 'next/image';
 import styles from '../styles/Posts.module.css';
+import modalStyles from '../styles/Modal.module.css';
+import Modal from '../components/modal';
 
 interface Post {
   id: string;
@@ -18,6 +20,7 @@ const Post = () => {
   const [user] = useAuthState(auth);
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputContent = e.target.value;
@@ -45,7 +48,8 @@ const Post = () => {
         });
 
         setContent("");
-        fetchPosts(); // 投稿後に最新の投稿を再取得して表示
+        setShowModal(false);
+        fetchPosts();
       } else {
         alert("ユーザー情報が見つかりません。再度ログインしてください。");
       }
@@ -73,12 +77,12 @@ const Post = () => {
 
     const confirmDelete = window.confirm("本当にこの投稿を削除してよろしいですか？");
     if (!confirmDelete) {
-      return; // キャンセル時は処理を中断
+      return;
     }
 
     try {
       await deleteDoc(doc(db, "posts", postId));
-      fetchPosts(); // 削除後に最新の投稿を再取得して表示
+      fetchPosts();
     } catch (error) {
       console.error("投稿の削除に失敗しました:", error);
       alert("投稿の削除に失敗しました。");
@@ -86,21 +90,26 @@ const Post = () => {
   };
 
   useEffect(() => {
-    fetchPosts(); // ページロード時に投稿を取得
+    fetchPosts();
   }, []);
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          placeholder="投稿内容"
-          value={content}
-          onChange={handleContentChange}
-          maxLength={140}
-          required
-        />
-        <button type="submit">投稿</button>
-      </form>
+      <button onClick={() => setShowModal(true)}>新規投稿</button>
+
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            placeholder="投稿内容"
+            value={content}
+            onChange={handleContentChange}
+            maxLength={140}
+            className={modalStyles.textarea}
+            required
+          />
+          <button type="submit" className={modalStyles.button}>投稿</button>
+        </form>
+      </Modal>
 
       <div>
         {posts.map((post) => (
