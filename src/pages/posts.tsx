@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { auth, db } from "../lib/firebaseConfig";
-import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Image from 'next/image';
+import styles from '../styles/Posts.module.css';
 
 interface Post {
   id: string;
   content: string;
   uid: string;
   createdAt: any;
+  username: string;
+  profileIconUrl: string;
 }
 
 const Post = () => {
@@ -21,14 +25,25 @@ const Post = () => {
       alert("投稿は140文字以内にしてください。");
       return;
     }
+
     try {
-      await addDoc(collection(db, "posts"), {
-        content,
-        uid: user?.uid,
-        createdAt: new Date(),
-      });
-      setContent("");
-      fetchPosts(); // 投稿後に最新の投稿を再取得して表示
+      const userDoc = await getDoc(doc(db, "users", user?.uid || ""));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+
+        await addDoc(collection(db, "posts"), {
+          content,
+          uid: user?.uid,
+          username: userData?.username || "名無しのユーザー",
+          profileIconUrl: userData?.profileIconUrl || "/default-profile.png",
+          createdAt: new Date(),
+        });
+
+        setContent("");
+        fetchPosts(); // 投稿後に最新の投稿を再取得して表示
+      } else {
+        alert("ユーザー情報が見つかりません。再度ログインしてください。");
+      }
     } catch (error) {
       console.error("投稿に失敗しました:", error);
       alert("投稿に失敗しました。");
@@ -53,7 +68,7 @@ const Post = () => {
 
     const confirmDelete = window.confirm("本当にこの投稿を削除してよろしいですか？");
     if (!confirmDelete) {
-      return; // キャンセルされた場合、削除処理を中断
+      return; // キャンセル時は処理を中断
     }
 
     try {
@@ -85,6 +100,16 @@ const Post = () => {
       <div>
         {posts.map((post) => (
           <div key={post.id}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Image
+                src={post.profileIconUrl}
+                alt={post.username}
+                width={40}
+                height={40}
+                className={styles.profileIcon}
+              />
+              <p>{post.username}</p>
+            </div>
             <p>{post.content}</p>
             <p>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
             {user?.uid === post.uid && (
@@ -98,4 +123,3 @@ const Post = () => {
 };
 
 export default Post;
-
