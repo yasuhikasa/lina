@@ -5,9 +5,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import styles from "../styles/Login.module.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPopup, setShowPopup] = useState(false); // ポップアップの表示管理
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [showPopup, setShowPopup] = useState<boolean>(false); // ポップアップの表示管理
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -17,7 +17,7 @@ const Login = () => {
       setShowPopup(true); // ポップアップを表示
       setTimeout(() => {
         setShowPopup(false); // ポップアップを非表示
-        router.push("/post"); // ページ遷移
+        router.push("/posts"); // ページ遷移
       }, 1000);
     } catch (error) {
       console.error("ログインに失敗しました:", error);

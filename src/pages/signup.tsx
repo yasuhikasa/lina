@@ -6,13 +6,13 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../lib/firebaseConfig";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [birthdate, setBirthdate] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
   const [profileIcon, setProfileIcon] = useState<File | null>(null); // プロフィールアイコンのファイル
-  const [agreedToTerms, setAgreedToTerms] = useState(false); // 利用規約への同意状態
+  const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false); // 利用規約への同意状態
 
   // ファイルインプットのリセット用
   const fileInputRef = useRef<HTMLInputElement>(null);
