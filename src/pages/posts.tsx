@@ -19,12 +19,17 @@ const Post = () => {
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (content.length > 140) {
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputContent = e.target.value;
+    if (inputContent.length > 140) {
       alert("投稿は140文字以内にしてください。");
       return;
     }
+    setContent(inputContent);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
     try {
       const userDoc = await getDoc(doc(db, "users", user?.uid || ""));
@@ -90,7 +95,7 @@ const Post = () => {
         <textarea
           placeholder="投稿内容"
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={handleContentChange}
           maxLength={140}
           required
         />
