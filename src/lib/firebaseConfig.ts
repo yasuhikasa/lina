@@ -12,12 +12,13 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
   appId: process.env.NEXT_PUBLIC_APPID,
-  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
 
 // Firebaseを初期化
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-export const analytics = typeof window !== "undefined" ? getAnalytics(app) : null;
+export const analytics =
+  typeof window !== "undefined" ? getAnalytics(app) : null;
 export const storage = getStorage(app);

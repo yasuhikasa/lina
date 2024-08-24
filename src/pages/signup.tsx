@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { auth, db, analytics } from '../lib/firebaseConfig';
+import { auth, db, analytics } from "../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -26,7 +26,11 @@ const Signup = () => {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
 
       let profileIconUrl = "";
@@ -44,7 +48,7 @@ const Signup = () => {
         birthdate,
         gender,
         profileIconUrl, // プロフィールアイコンのURLを保存
-        agreedToTerms,  // 利用規約への同意状態を保存
+        agreedToTerms, // 利用規約への同意状態を保存
         createdAt: new Date(),
       });
 
@@ -105,7 +109,11 @@ const Signup = () => {
         onChange={(e) => setBirthdate(e.target.value)}
         required
       />
-      <select value={gender} onChange={(e) => setGender(e.target.value)} required>
+      <select
+        value={gender}
+        onChange={(e) => setGender(e.target.value)}
+        required
+      >
         <option value="">性別を選択</option>
         <option value="male">男性</option>
         <option value="female">女性</option>
@@ -114,7 +122,9 @@ const Signup = () => {
       <input
         type="file"
         ref={fileInputRef}
-        onChange={(e) => setProfileIcon(e.target.files ? e.target.files[0] : null)}
+        onChange={(e) =>
+          setProfileIcon(e.target.files ? e.target.files[0] : null)
+        }
         accept="image/*"
         required
       />
