@@ -74,6 +74,10 @@ const Signup: NextPage = () => {
     }
   };
 
+  const navigateToLogin = () => {
+    router.push("/login");
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>ユーザー登録</h1>
@@ -146,6 +150,12 @@ const Signup: NextPage = () => {
         </label>
         <Button text="サインアップ" margin="1rem 0 0 0" onClick={() =>handleSignup} />
       </form>
+      <p className={styles.loginText}>
+        すでにアカウントをお持ちですか？{" "}
+        <span className={styles.loginLink} onClick={navigateToLogin}>
+          ログイン
+        </span>
+      </p>
     </div>
   );
 };

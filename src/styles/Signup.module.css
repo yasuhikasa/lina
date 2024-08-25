@@ -34,18 +34,20 @@
   text-align: center;
 }
 
-.label {
-  margin-bottom: 20px;
-  font-size: 0.9rem;
+.loginText {
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: center;
 }
 
-.label a {
-  color: blue;
+.loginLink {
+  color: #0070f3;
+  cursor: pointer;
   text-decoration: underline;
 }
 
 .link {
-  color: blue;
+  color: #0070f3;
   text-decoration: underline;
 }
 
