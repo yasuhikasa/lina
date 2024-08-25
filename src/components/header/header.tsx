@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../libs/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "@/styles/components/Header.module.css";
 
@@ -9,6 +11,7 @@ const Header = () => {
   const [user] = useAuthState(auth);
   const [username, setUsername] = useState<string | null>(null);
   const [profileIconUrl, setProfileIconUrl] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -25,6 +28,14 @@ const Header = () => {
     fetchUserData();
   }, [user]);
 
+  const handleLogout = async () => {
+    const confirmed = window.confirm("ログアウトしてもよろしいですか？");
+    if (confirmed) {
+      await signOut(auth);
+      router.push("/");
+    }
+  };
+
   if (!user) return null;
 
   return (
@@ -39,6 +50,9 @@ const Header = () => {
         />
         <p className={styles.username}>{username || "名無しのユーザー"}</p>
       </div>
+      <a className={styles.logoutLink} onClick={handleLogout}>
+        ログアウト
+      </a>
     </header>
   );
 };

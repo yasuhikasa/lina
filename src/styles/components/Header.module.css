@@ -1,10 +1,10 @@
 .header {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  position: relative; /* ログアウトリンクを右上に配置するため */
 }
 
 .userInfo {
@@ -19,5 +19,17 @@
 
 .username {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: bold;
+}
+
+.logoutLink {
+  position: absolute; /* ログアウトリンクを右側に配置 */
+  right: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.logoutLink:hover {
+  color: #005bb5;
 }

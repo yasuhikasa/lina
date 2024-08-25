@@ -27,8 +27,8 @@ const Post = () => {
 
   useEffect(() => {
     if (!loading && !user) {
-      // ログインしていない場合、ログインページにリダイレクト
-      router.push("/login");
+      // ログインしていない場合、トップページにリダイレクト
+      router.push("/");
     }
   }, [user, loading, router]);
 
