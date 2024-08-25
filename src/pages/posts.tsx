@@ -7,7 +7,7 @@ import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
 import Button from '../components/button/button';
-import PostItem from '../components/post/postItem';
+import PostItem from '../components/posts/postItem';
 import { NextPage } from "next";
 
 interface Post {
