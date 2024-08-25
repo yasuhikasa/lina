@@ -3,12 +3,11 @@ import { useRouter } from "next/router";
 import { auth, db } from "../libs/firebaseConfig";
 import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Image from 'next/image';
-import styles from '../styles/Posts.module.css';
 import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
 import Button from '../components/button/button';
+import PostItem from '../components/post/postItem';
 import { NextPage } from "next";
 
 interface Post {
@@ -127,42 +126,16 @@ const Post: NextPage = () => {
           <button type="submit" className={modalStyles.button}>投稿</button>
         </form>
       </Modal>
-
       <div>
         {posts.map((post) => (
-          <div key={post.id} className={styles.postContainer}>
-          <div className={styles.postHeader}>
-            <div className={styles.userInfo}>
-              <Image
-                src={post.profileIconUrl}
-                alt={post.username}
-                width={40}
-                height={40}
-                className={styles.profileIcon}
-              />
-              <p className={styles.username}>{post.username}</p>
-            </div>
-            {user?.uid === post.uid && (
-              <Button
-                text="削除"
-                onClick={() => handleDelete(post.id, post.uid)}
-                backgroundColor="#d3d3d3"
-                color="#000"
-                padding="0.3rem 0.5rem"
-                margin="0"
-                fontSize="0.8rem"
-              />
-           )}
-          </div>
-          <p className={styles.postContent}>{post.content}</p>
-          <p className={styles.postTimestamp}>
-            {new Date(post.createdAt.seconds * 1000).toLocaleDateString()} {new Date(post.createdAt.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-          </p>
-
-        </div>
+          <PostItem
+            key={post.id}
+            post={post}
+            userUid={user?.uid}
+            handleDelete={handleDelete}
+          />
         ))}
       </div>
-
     </div>
   ) : null;
 };

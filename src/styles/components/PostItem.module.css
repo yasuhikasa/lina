@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .postContent {
@@ -47,3 +47,24 @@
   margin-right: 15px;
 }
 
+/* スマホ画面向けのスタイル調整 */
+@media (max-width: 600px) {
+  .postContainer {
+    padding: 0.5rem;
+    margin: 1rem;
+    max-width: 100%;
+  }
+
+  .postContent {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .postTimestamp {
+    font-size: 0.75rem;
+  }
+
+  .username {
+    font-size: 0.9rem;
+  }
+}
