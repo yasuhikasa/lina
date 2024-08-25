@@ -129,7 +129,13 @@ const Post: NextPage = () => {
             maxLength={140}
             required
           />
-          <button type="submit" className={modalStyles.button}>投稿</button>
+          <Button
+            text="投稿"
+            type="submit"
+            width="100%"
+            margin="1rem 0 0 0"
+            onClick={() => handleSubmit}
+          />
         </form>
       </Modal>
       <div>
