@@ -2,8 +2,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Button from "@/components/button/button";
 import styles from "@/styles/Home.module.css";
+import { NextPage } from "next";
 
-export default function Home() {
+const Index: NextPage = () => {
   const router = useRouter();
 
   const navigateToSignup = () => {
@@ -38,3 +39,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Index;
