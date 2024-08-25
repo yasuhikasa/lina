@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { auth, db } from "../libs/firebaseConfig";
 import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -18,10 +19,18 @@ interface Post {
 }
 
 const Post = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth); // ユーザー情報を取得、認証状態も確認
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      // ログインしていない場合、ログインページにリダイレクト
+      router.push("/login");
+    }
+  }, [user, loading, router]);
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputContent = e.target.value;
@@ -94,7 +103,11 @@ const Post = () => {
     fetchPosts();
   }, []);
 
-  return (
+  if (loading) {
+    return <p>読み込み中...</p>;
+  }
+
+  return user ? (
     <div>
       <Header />
       <button onClick={() => setShowModal(true)}>新規投稿</button>
@@ -135,7 +148,7 @@ const Post = () => {
         ))}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Post;
