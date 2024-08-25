@@ -155,7 +155,10 @@ const Post: NextPage = () => {
            )}
           </div>
           <p className={styles.postContent}>{post.content}</p>
-          <p className={styles.postTimestamp}>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
+          <p className={styles.postTimestamp}>
+            {new Date(post.createdAt.seconds * 1000).toLocaleDateString()} {new Date(post.createdAt.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          </p>
+
         </div>
         ))}
       </div>
