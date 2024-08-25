@@ -10,17 +10,17 @@ import { NextPage } from "next";
 const Login: NextPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [showPopup, setShowPopup] = useState<boolean>(false); // ポップアップの表示管理
+  const [showPopup, setShowPopup] = useState<boolean>(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setShowPopup(true); // ポップアップを表示
+      setShowPopup(true);
       setTimeout(() => {
-        setShowPopup(false); // ポップアップを非表示
-        router.push("/posts"); // 投稿ページへ遷移
+        setShowPopup(false);
+        router.push("/posts");
       }, 1000);
     } catch (error) {
       console.error("ログインに失敗しました:", error);

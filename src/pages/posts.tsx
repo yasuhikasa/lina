@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { auth, db } from "../libs/firebaseConfig";
 import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
 import Button from '../components/button/button';
@@ -55,8 +54,8 @@ const Post: NextPage = () => {
         await addDoc(collection(db, "posts"), {
           content,
           uid: user?.uid,
-          username: userData?.username || "名無しのユーザー",
-          profileIconUrl: userData?.profileIconUrl || "/default-profile.png",
+          username: userData?.username,
+          profileIconUrl: userData?.profileIconUrl,
           createdAt: new Date(),
         });
 
