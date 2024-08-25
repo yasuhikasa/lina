@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/Select.module.css";
+import styles from "@/styles/components/Select.module.css";
 
 interface Option {
   value: string;

@@ -4,7 +4,7 @@ import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } f
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from 'next/image';
 import styles from '../styles/Posts.module.css';
-import modalStyles from '../styles/Modal.module.css';
+import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
 
 interface Post {

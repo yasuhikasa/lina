@@ -1,6 +1,5 @@
-// FileInput.tsx
 import React, { useRef } from "react";
-import styles from "@/styles/Input.module.css";
+import styles from "@/styles/components/Input.module.css";
 
 interface FileInputProps {
   onChange: (file: File | null) => void;
