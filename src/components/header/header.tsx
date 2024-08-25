@@ -9,8 +9,8 @@ import styles from "@/styles/components/Header.module.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  const [username, setUsername] = useState<string>();
-  const [profileIconUrl, setProfileIconUrl] = useState<string>();
+  const [username, setUsername] = useState<string | null>(null);
+  const [profileIconUrl, setProfileIconUrl] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.userInfo}>
         <Image
-          src={profileIconUrl || ""}
+          src={profileIconUrl || "/heart.png"}
           alt={username || ""}
           width={40}
           height={40}
