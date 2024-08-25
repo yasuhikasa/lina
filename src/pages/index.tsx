@@ -1,43 +1,13 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import Button from "@/components/button/button";
+import IndexTemplate from "@/components/templates/index";
 import styles from "@/styles/Index.module.css";
 import { NextPage } from "next";
 
-const Index: NextPage = () => {
-  const router = useRouter();
-
-  const navigateToSignup = () => {
-    router.push("/signup");
-  };
-
-  const navigateToLogin = () => {
-    router.push("/login");
-  };
-
+const IndexPage: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>コーディング試験アプリ</title>
-        <meta name="description" content="コーディング試験アプリ" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/heart.png" />
-      </Head>
-      <main className={styles.main}>
+    <IndexTemplate title="コーディング試験アプリ">
       <h1 className={styles.h1}>コーディング試験アプリ</h1>
-        <div className={styles.buttonContainer}>
-          <Button
-            text="サインアップ"
-            onClick={navigateToSignup}
-          />
-          <Button
-            text="サインイン"
-            onClick={navigateToLogin}
-          />
-        </div>
-      </main>
-    </>
+    </IndexTemplate>
   );
 }
 
-export default Index;
+export default IndexPage;
