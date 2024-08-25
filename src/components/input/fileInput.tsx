@@ -7,7 +7,11 @@ interface FileInputProps {
   accept?: string;
 }
 
-const FileInput: React.FC<FileInputProps> = ({ onChange, required = false, accept }) => {
+const FileInput: React.FC<FileInputProps> = ({
+  onChange,
+  required = false,
+  accept,
+}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

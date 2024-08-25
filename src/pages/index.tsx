@@ -8,6 +8,6 @@ const IndexPage: NextPage = () => {
       <h1 className={styles.h1}>コーディング試験アプリ</h1>
     </IndexTemplate>
   );
-}
+};
 
 export default IndexPage;

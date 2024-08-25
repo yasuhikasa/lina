@@ -1,3 +1,2 @@
-import '@testing-library/jest-dom';
-import 'next-router-mock';
-
+import "@testing-library/jest-dom";
+import "next-router-mock";

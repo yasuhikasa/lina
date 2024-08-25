@@ -29,14 +29,16 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       className={styles.button}
-      style={{
-        color,
-        backgroundColor,
-        margin,
-        "--padding": padding,
-        "--fontSize": fontSize,
-        width,
-      } as React.CSSProperties}
+      style={
+        {
+          color,
+          backgroundColor,
+          margin,
+          "--padding": padding,
+          "--fontSize": fontSize,
+          width,
+        } as React.CSSProperties
+      }
     >
       {text}
     </button>

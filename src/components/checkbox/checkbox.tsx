@@ -8,7 +8,12 @@ interface CheckboxProps {
   required?: boolean;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ name, checked, onChange, required = false }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+  name,
+  checked,
+  onChange,
+  required = false,
+}) => {
   return (
     <input
       type="checkbox"

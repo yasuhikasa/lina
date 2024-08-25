@@ -1,26 +1,26 @@
-import { render, screen } from '@testing-library/react';
-import { useRouter } from 'next/router';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import Index from '@/components/templates/index';
+import { render, screen } from "@testing-library/react";
+import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Index from "@/components/templates/index";
 
 // モック関数を作成
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock('react-firebase-hooks/auth', () => ({
+jest.mock("react-firebase-hooks/auth", () => ({
   useAuthState: jest.fn(),
 }));
 
-jest.mock('@/components/button/button', () => {
+jest.mock("@/components/button/button", () => {
   const MockButton = (props: any) => (
     <button onClick={props.onClick}>{props.text}</button>
   );
-  MockButton.displayName = 'MockButton';
+  MockButton.displayName = "MockButton";
   return MockButton;
 });
 
-describe('Index Template', () => {
+describe("Index Template", () => {
   const push = jest.fn();
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe('Index Template', () => {
     (useAuthState as jest.Mock).mockReturnValue([null, false, null]);
   });
 
-  it('ユーザーがログインしていない場合、リダイレクトされないことを確認する', () => {
+  it("ユーザーがログインしていない場合、リダイレクトされないことを確認する", () => {
     render(
       <Index title="コーディング試験アプリ">
         <h1>コーディング試験アプリ</h1>
@@ -39,8 +39,8 @@ describe('Index Template', () => {
     expect(push).not.toHaveBeenCalled();
   });
 
-  it('ユーザーがログインしている場合、/posts へリダイレクトされることを確認する', () => {
-    (useAuthState as jest.Mock).mockReturnValue([{ uid: '123' }, false, null]);
+  it("ユーザーがログインしている場合、/posts へリダイレクトされることを確認する", () => {
+    (useAuthState as jest.Mock).mockReturnValue([{ uid: "123" }, false, null]);
 
     render(
       <Index title="コーディング試験アプリ">
@@ -48,6 +48,6 @@ describe('Index Template', () => {
       </Index>
     );
 
-    expect(push).toHaveBeenCalledWith('/posts');
+    expect(push).toHaveBeenCalledWith("/posts");
   });
 });

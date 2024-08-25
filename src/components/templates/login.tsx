@@ -59,11 +59,7 @@ const Login: NextPage = () => {
           width="100%"
           required
         />
-        <Button
-          text="ログイン"
-          type="submit"
-          onClick={() => handleLogin}
-        />
+        <Button text="ログイン" type="submit" onClick={() => handleLogin} />
       </form>
       <p className={styles.signupText}>
         アカウントをお持ちでないですか？{" "}

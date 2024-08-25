@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import styles from '@/styles/components/Modal.module.css';
+import { ReactNode } from "react";
+import styles from "@/styles/components/Modal.module.css";
 
 interface ModalProps {
   isOpen: boolean;
@@ -23,4 +23,3 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 };
 
 export default Modal;
-

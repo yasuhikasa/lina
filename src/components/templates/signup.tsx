@@ -49,10 +49,9 @@ const Signup: NextPage = () => {
     if (user) {
       setTimeout(() => {
         router.push("/posts");
-      }, 1500);  // 1.5秒遅延させてから遷移
+      }, 1500); // 1.5秒遅延させてから遷移
     }
   }, [user, loading, isSigningUp, router]);
-
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -181,11 +180,7 @@ const Signup: NextPage = () => {
           ]}
           required
         />
-        <FileInput
-          onChange={handleFileChange}
-          accept="image/*"
-          required
-        />
+        <FileInput onChange={handleFileChange} accept="image/*" required />
         <label>
           <Checkbox
             name="agreedToTerms"

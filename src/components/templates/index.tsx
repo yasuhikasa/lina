@@ -43,14 +43,8 @@ const Index: NextPage<IndexProps> = ({ title, children }) => {
       <main className={styles.main}>
         {children}
         <div className={styles.buttonContainer}>
-          <Button
-            text="サインアップ"
-            onClick={navigateToSignup}
-          />
-          <Button
-            text="サインイン"
-            onClick={navigateToLogin}
-          />
+          <Button text="サインアップ" onClick={navigateToSignup} />
+          <Button text="サインイン" onClick={navigateToLogin} />
         </div>
       </main>
     </>
@@ -58,4 +52,3 @@ const Index: NextPage<IndexProps> = ({ title, children }) => {
 };
 
 export default Index;
-

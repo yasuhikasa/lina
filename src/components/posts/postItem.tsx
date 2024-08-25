@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import Button from '../button/button';
-import styles from '@/styles/components/PostItem.module.css';
+import React from "react";
+import Image from "next/image";
+import Button from "../button/button";
+import styles from "@/styles/components/PostItem.module.css";
 
 interface Post {
   id: string;
@@ -46,7 +46,11 @@ const PostItem: React.FC<PostItemProps> = ({ post, userUid, handleDelete }) => {
       </div>
       <p className={styles.postContent}>{post.content}</p>
       <p className={styles.postTimestamp}>
-        {new Date(post.createdAt.seconds * 1000).toLocaleDateString()} {new Date(post.createdAt.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        {new Date(post.createdAt.seconds * 1000).toLocaleDateString()}{" "}
+        {new Date(post.createdAt.seconds * 1000).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
       </p>
     </div>
   );

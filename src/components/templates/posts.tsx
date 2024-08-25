@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { auth, db } from "../../libs/firebaseConfig";
-import { addDoc, collection, query, orderBy, getDocs, doc, deleteDoc, getDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  query,
+  orderBy,
+  getDocs,
+  doc,
+  deleteDoc,
+  getDoc,
+} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Modal from '../modal/modal';
-import Header from '../header/header';
-import Button from '../button/button';
-import PostItem from '../posts/postItem';
-import Textarea from '../textarea/textarea';
-import styles from '@/styles/Posts.module.css';
+import Modal from "../modal/modal";
+import Header from "../header/header";
+import Button from "../button/button";
+import PostItem from "../posts/postItem";
+import Textarea from "../textarea/textarea";
+import styles from "@/styles/Posts.module.css";
 import { NextPage } from "next";
 
 interface PostsProps {
@@ -73,9 +82,16 @@ const Posts: NextPage = () => {
 
   const fetchPosts = async () => {
     try {
-      const postsQuery = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+      const postsQuery = query(
+        collection(db, "posts"),
+        orderBy("createdAt", "desc")
+      );
       const postsData = await getDocs(postsQuery);
-      setPosts(postsData.docs.map((doc) => ({ id: doc.id, ...doc.data() } as PostsProps)));
+      setPosts(
+        postsData.docs.map(
+          (doc) => ({ id: doc.id, ...doc.data() }) as PostsProps
+        )
+      );
     } catch (error) {
       console.error("投稿の取得に失敗しました:", error);
     }
@@ -87,7 +103,9 @@ const Posts: NextPage = () => {
       return;
     }
 
-    const confirmDelete = window.confirm("本当にこの投稿を削除してよろしいですか？");
+    const confirmDelete = window.confirm(
+      "本当にこの投稿を削除してよろしいですか？"
+    );
     if (!confirmDelete) {
       return;
     }
@@ -113,10 +131,7 @@ const Posts: NextPage = () => {
     <div>
       <Header />
       <div className={styles.newPostButtonContainer}>
-        <Button
-          text="新規投稿"
-          onClick={() => setShowModal(true)}
-        />
+        <Button text="新規投稿" onClick={() => setShowModal(true)} />
       </div>
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
