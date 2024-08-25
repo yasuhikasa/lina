@@ -28,14 +28,10 @@ export default function Home() {
           <Button
             text="サインアップ"
             onClick={navigateToSignup}
-            backgroundColor="#0070f3"
-            color="#fff"
           />
           <Button
             text="サインイン"
             onClick={navigateToLogin}
-            backgroundColor="#0070f3"
-            color="#fff"
           />
         </div>
       </main>
