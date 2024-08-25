@@ -94,7 +94,7 @@ const Signup: NextPage = () => {
       setTimeout(() => {
         setShowPopup(false);
         router.push("/login");
-      }, 2000);
+      }, 1000);
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         alert("このメールアドレスはすでに使用されています。");
