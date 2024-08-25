@@ -4,6 +4,7 @@ import { auth } from "../libs/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import styles from "../styles/Login.module.css";
 import Button from "../components/button/button";
+import Input from "../components/input/input";
 import { NextPage } from "next";
 
 const Login: NextPage = () => {
@@ -42,20 +43,20 @@ const Login: NextPage = () => {
       )}
       <h1 className={styles.title}>ログイン</h1>
       <form onSubmit={handleLogin} className={styles.form}>
-        <input
+        <Input
           type="email"
           placeholder="メールアドレス"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={styles.input}
+          width="100%"
           required
         />
-        <input
+        <Input
           type="password"
           placeholder="パスワード"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className={styles.input}
+          width="100%"
           required
         />
         <Button

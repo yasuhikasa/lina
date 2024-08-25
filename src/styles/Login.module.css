@@ -27,6 +27,7 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
 .popup {
@@ -44,10 +45,11 @@
 .signupText {
   margin-top: 1rem;
   font-size: 1rem;
+  text-align: center;
 }
 
 .signupLink {
-  color: blue;
+  color: #0070f3; /* ボタンと同じ色 */
   cursor: pointer;
   text-decoration: underline;
 }
@@ -69,10 +71,12 @@
   .input {
     padding: 8px;
     margin-bottom: 15px;
+    font-size: 0.9rem; /* 小さいデバイス向けにフォントサイズを調整 */
   }
 
   .signupText {
     font-size: 0.9rem;
   }
 }
+
 
