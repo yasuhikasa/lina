@@ -12,8 +12,9 @@ import Button from "../components/button/button";
 import Checkbox from "../components/checkbox/checkbox";
 import Select from "../components/select/select";
 import FileInput from "../components/input/fileInput";
+import { NextPage } from "next";
 
-const Signup = () => {
+const Signup: NextPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");

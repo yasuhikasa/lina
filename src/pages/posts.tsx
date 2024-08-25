@@ -8,6 +8,7 @@ import styles from '../styles/Posts.module.css';
 import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
+import { NextPage } from "next";
 
 interface Post {
   id: string;
@@ -18,7 +19,7 @@ interface Post {
   profileIconUrl: string;
 }
 
-const Post = () => {
+const Post: NextPage = () => {
   const [user, loading] = useAuthState(auth); // ユーザー情報を取得、認証状態も確認
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
