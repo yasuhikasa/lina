@@ -8,6 +8,7 @@ import styles from '../styles/Posts.module.css';
 import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
+import Button from '../components/button/button';
 import { NextPage } from "next";
 
 interface Post {
@@ -130,7 +131,8 @@ const Post: NextPage = () => {
       <div>
         {posts.map((post) => (
           <div key={post.id} className={styles.postContainer}>
-            <div className={styles.postHeader}>
+          <div className={styles.postHeader}>
+            <div className={styles.userInfo}>
               <Image
                 src={post.profileIconUrl}
                 alt={post.username}
@@ -138,14 +140,23 @@ const Post: NextPage = () => {
                 height={40}
                 className={styles.profileIcon}
               />
-              <p>{post.username}</p>
+              <p className={styles.username}>{post.username}</p>
             </div>
-            <p className={styles.postContent}>{post.content}</p>
-            <p className={styles.postTimestamp}>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
             {user?.uid === post.uid && (
-              <button onClick={() => handleDelete(post.id, post.uid)}>削除</button>
-            )}
+              <Button
+                text="削除"
+                onClick={() => handleDelete(post.id, post.uid)}
+                backgroundColor="#d3d3d3"
+                color="#000"
+                padding="0.3rem 0.5rem"
+                margin="0"
+                fontSize="0.8rem"
+              />
+           )}
           </div>
+          <p className={styles.postContent}>{post.content}</p>
+          <p className={styles.postTimestamp}>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
+        </div>
         ))}
       </div>
 

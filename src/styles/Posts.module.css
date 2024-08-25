@@ -5,17 +5,17 @@
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin: 0.5rem auto; /* 左右に余白を追加し、中央寄せ */
-  max-width: 600px; /* 投稿の最大幅を制限 */
+  margin: 1.5rem auto;
+  max-width: 600px;
   background-color: #f9f9f9;
 }
 
 .postHeader {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* アイコンとユーザー名を右寄せ */
+  justify-content: space-between;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
 }
 
 .postContent {
@@ -32,7 +32,18 @@
   width: 100%;
 }
 
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .profileIcon {
   border-radius: 50%;
-  margin-right: 15px; /* アイコンと名前の間の余白を少し広げる */
+  margin-right: 15px;
 }
+
