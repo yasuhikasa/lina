@@ -129,8 +129,8 @@ const Post: NextPage = () => {
 
       <div>
         {posts.map((post) => (
-          <div key={post.id}>
-            <div style={{ display: "flex", alignItems: "center" }}>
+          <div key={post.id} className={styles.postContainer}>
+            <div className={styles.postHeader}>
               <Image
                 src={post.profileIconUrl}
                 alt={post.username}
@@ -140,14 +140,15 @@ const Post: NextPage = () => {
               />
               <p>{post.username}</p>
             </div>
-            <p>{post.content}</p>
-            <p>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
+            <p className={styles.postContent}>{post.content}</p>
+            <p className={styles.postTimestamp}>{new Date(post.createdAt.seconds * 1000).toLocaleString()}</p>
             {user?.uid === post.uid && (
               <button onClick={() => handleDelete(post.id, post.uid)}>削除</button>
             )}
           </div>
         ))}
       </div>
+
     </div>
   ) : null;
 };

@@ -1,4 +1,38 @@
-.profile-icon {
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 0.5rem auto; /* 左右に余白を追加し、中央寄せ */
+  max-width: 600px; /* 投稿の最大幅を制限 */
+  background-color: #f9f9f9;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* アイコンとユーザー名を右寄せ */
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.postContent {
+  text-align: left;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.postTimestamp {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: right;
+  width: 100%;
+}
+
+.profileIcon {
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 15px; /* アイコンと名前の間の余白を少し広げる */
 }
