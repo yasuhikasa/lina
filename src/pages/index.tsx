@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Button from "@/components/button/button";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Index.module.css";
 import { NextPage } from "next";
 
 const Index: NextPage = () => {
