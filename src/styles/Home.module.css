@@ -10,6 +10,7 @@
 .h1 {
   font-size: 2rem;
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 
 .buttonContainer {
@@ -17,3 +18,9 @@
   gap: 1rem;
 }
 
+@media (max-width: 600px) {
+  .buttonContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

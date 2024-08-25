@@ -23,7 +23,7 @@ export default function Home() {
         <link rel="icon" href="/heart.png" />
       </Head>
       <main className={styles.main}>
-        <h1>コーディング試験アプリへようこそ</h1>
+      <h1 className={styles.h1}>コーディング試験アプリ</h1>
         <div className={styles.buttonContainer}>
           <Button
             text="サインアップ"
