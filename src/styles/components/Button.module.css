@@ -10,8 +10,8 @@
 /* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
   .button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: var(--padding, 0.5rem 1rem);
+    font-size: var(--fontSize, 0.9rem);
   }
 }
 
