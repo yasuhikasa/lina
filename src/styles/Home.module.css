@@ -20,6 +20,11 @@
 
 /* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
+  .main {
+    justify-content: flex-start; /* 画面上部に寄せる */
+    padding-top: 2rem;
+  }
+
   .buttonContainer {
     flex-direction: column;
     gap: 1.5rem;

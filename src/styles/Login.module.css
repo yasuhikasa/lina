@@ -40,7 +40,7 @@
 }
 
 .signupLink {
-  color: #0070f3; /* ボタンと同じ色 */
+  color: #0070f3;
   cursor: pointer;
   text-decoration: underline;
 }
@@ -48,7 +48,8 @@
 /* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
   .container {
-    padding: 0.5rem;
+    justify-content: flex-start; /* コンテンツを上に寄せる */
+    padding-top: 2rem;
   }
 
   .title {
