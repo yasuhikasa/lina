@@ -23,6 +23,7 @@ const FileInput: React.FC<FileInputProps> = ({ onChange, required = false, accep
       accept={accept}
       ref={fileInputRef}
       className={styles.input}
+      data-testid="file-input"
     />
   );
 };
