@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
-import { auth, db } from "../lib/firebaseConfig";
+import { auth, db } from "../libs/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { storage } from "../lib/firebaseConfig";
+import { storage } from "../libs/firebaseConfig";
 import styles from "../styles/Signup.module.css";
 
 const Signup = () => {
