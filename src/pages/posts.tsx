@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Image from 'next/image';
 import styles from '../styles/Posts.module.css';
 import modalStyles from '../styles/Modal.module.css';
-import Modal from '../components/modal';
+import Modal from '../components/modal/modal';
 
 interface Post {
   id: string;
