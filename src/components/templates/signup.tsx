@@ -1,6 +1,7 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/router";
 import { auth, db } from "../../libs/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -36,7 +37,22 @@ const Signup: NextPage = () => {
   });
 
   const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [user, loading] = useAuthState(auth);
+  const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
   const router = useRouter();
+
+  useEffect(() => {
+    // サインアップ中の場合は何もしない
+    if (loading || isSigningUp) return;
+    // ユーザーがログインしている場合、postsページにリダイレクト
+    // サインアップ後もログイン状態になるため、ユーザーがいる場合はpostsページにリダイレクト
+    if (user) {
+      setTimeout(() => {
+        router.push("/posts");
+      }, 1500);  // 1.5秒遅延させてから遷移
+    }
+  }, [user, loading, isSigningUp, router]);
+
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -58,9 +74,11 @@ const Signup: NextPage = () => {
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
+    setIsSigningUp(true);
 
     if (formState.password.length < 6) {
       alert("パスワードは6文字以上である必要があります。");
+      setIsSigningUp(false); // エラーが発生した場合はサインアップ状態を解除
       return;
     }
 
@@ -93,9 +111,10 @@ const Signup: NextPage = () => {
 
       setTimeout(() => {
         setShowPopup(false);
-        router.push("/login");
+        setIsSigningUp(false);
       }, 1000);
     } catch (error: any) {
+      setIsSigningUp(false); // エラーが発生した場合はサインアップ状態を解除
       if (error.code === "auth/email-already-in-use") {
         alert("このメールアドレスはすでに使用されています。");
       } else if (error.code === "auth/invalid-email") {

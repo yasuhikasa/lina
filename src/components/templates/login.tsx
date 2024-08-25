@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { auth } from "../../libs/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import styles from "../../styles/Login.module.css";
 import Button from "../button/button";
@@ -10,15 +11,21 @@ import { NextPage } from "next";
 const Login: NextPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [user, loading] = useAuthState(auth);
   const router = useRouter();
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) {
+      // ユーザーがログインしている場合、postsページにリダイレクト
+      router.push("/posts");
+    }
+  }, [user, loading, router]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setShowPopup(true);
-      setShowPopup(false);
       router.push("/posts");
     } catch (error) {
       console.error("ログインに失敗しました:", error);
