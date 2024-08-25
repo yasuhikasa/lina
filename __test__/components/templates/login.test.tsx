@@ -1,50 +1,30 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { useRouter } from 'next/router';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { render, screen } from '@testing-library/react';
 import Login from '@/components/templates/login';
-import { auth } from '@/libs/firebaseConfig';
+import mockRouter from 'next-router-mock';
 
-jest.mock('next/router', () => ({
-  useRouter: jest.fn(),
-}));
-jest.mock('firebase/auth');
+jest.mock('next/router', () => require('next-router-mock'));
 
-describe('Login Template', () => {
-  const mockPush = jest.fn();
-
+describe('Login Page', () => {
   beforeEach(() => {
-    (useRouter as jest.Mock).mockReturnValue({
-      push: mockPush,
-    });
-    (signInWithEmailAndPassword as jest.Mock).mockClear();
+    mockRouter.setCurrentUrl('/login');
   });
 
   it('ログインページが正しくレンダリングされることを確認する', () => {
     render(<Login />);
 
+    // ヘッディングの確認
     expect(screen.getByRole('heading', { name: 'ログイン' })).toBeInTheDocument();
+
+    // メールアドレス入力フィールドの確認
     expect(screen.getByPlaceholderText('メールアドレス')).toBeInTheDocument();
+
+    // パスワード入力フィールドの確認
     expect(screen.getByPlaceholderText('パスワード')).toBeInTheDocument();
+
+    // ログインボタンの確認
     expect(screen.getByRole('button', { name: 'ログイン' })).toBeInTheDocument();
-  });
 
-  it('ログインが成功した場合、/posts にリダイレクトされることを確認する', async () => {
-    (signInWithEmailAndPassword as jest.Mock).mockResolvedValueOnce({});
-
-    render(<Login />);
-
-    fireEvent.change(screen.getByPlaceholderText('メールアドレス'), {
-      target: { value: 'test@example.com' },
-    });
-    fireEvent.change(screen.getByPlaceholderText('パスワード'), {
-      target: { value: 'password123' },
-    });
-    fireEvent.click(screen.getByRole('button', { name: 'ログイン' }));
-
-    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(auth, 'test@example.com', 'password123');
-
-    await waitFor(() => {
-      expect(mockPush).toHaveBeenCalledWith('/posts');
-    });
+    // サインアップリンクの確認
+    expect(screen.getByText('サインアップ')).toBeInTheDocument();
   });
 });

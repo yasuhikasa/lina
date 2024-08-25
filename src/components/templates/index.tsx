@@ -1,16 +1,15 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import { auth } from "@/libs/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Button from "@/components/button/button";
 import styles from "@/styles/Index.module.css";
-import { ReactNode } from "react";
 import { NextPage } from "next";
 
 interface IndexProps {
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Index: NextPage<IndexProps> = ({ title, children }) => {
@@ -24,7 +23,6 @@ const Index: NextPage<IndexProps> = ({ title, children }) => {
       router.push("/posts");
     }
   }, [user, loading, router]);
-
 
   const navigateToSignup = () => {
     router.push("/signup");
@@ -60,3 +58,4 @@ const Index: NextPage<IndexProps> = ({ title, children }) => {
 };
 
 export default Index;
+
