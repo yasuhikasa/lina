@@ -7,3 +7,10 @@
   font-size: 1rem;
 }
 
+@media (max-width: 600px) {
+.input {
+  padding: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem; /* 小さいデバイス向けにフォントサイズを調整 */
+}
+}

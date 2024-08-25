@@ -1,0 +1,14 @@
+.select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .select {
+    width: 100%;
+  }
+}

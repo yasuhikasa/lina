@@ -62,10 +62,6 @@ const Login: NextPage = () => {
         <Button
           text="ログイン"
           onClick={() => handleLogin}
-          backgroundColor="#0070f3"
-          color="#fff"
-          padding="0.75rem 1.5rem"
-          fontSize="1rem"
         />
       </form>
       <p className={styles.signupText}>
