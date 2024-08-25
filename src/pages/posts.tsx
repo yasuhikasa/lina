@@ -8,6 +8,7 @@ import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
 import Button from '../components/button/button';
 import PostItem from '../components/posts/postItem';
+import styles from '../styles/Posts.module.css';
 import { NextPage } from "next";
 
 interface Post {
@@ -111,7 +112,12 @@ const Post: NextPage = () => {
   return user ? (
     <div>
       <Header />
-      <button onClick={() => setShowModal(true)}>新規投稿</button>
+      <div className={styles.newPostButtonContainer}>
+        <Button
+          text="新規投稿"
+          onClick={() => setShowModal(true)}
+        />
+      </div>
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <form onSubmit={handleSubmit}>

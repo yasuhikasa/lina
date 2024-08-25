@@ -47,7 +47,7 @@
   margin-right: 15px;
 }
 
-/* スマホ画面向けのスタイル調整 */
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
   .postContainer {
     padding: 0.5rem;

@@ -1,0 +1,12 @@
+.newPostButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 1rem 30rem;
+}
+
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
+@media (max-width: 600px) {
+  .newPostButtonContainer {
+    margin: 1rem 0 1rem 0;
+  }
+}

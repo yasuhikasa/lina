@@ -18,9 +18,10 @@
   gap: 1rem;
 }
 
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
   .buttonContainer {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.5rem;
   }
 }

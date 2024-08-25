@@ -16,15 +16,21 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   color = "#fff",
   backgroundColor = "#0070f3",
-  padding = "0.75rem 1.5rem",
   margin = "0",
-  fontSize = "1rem",
+  padding,
+  fontSize,
 }) => {
   return (
     <button
       onClick={onClick}
       className={styles.button}
-      style={{ color, backgroundColor, margin, padding, fontSize }}
+      style={{
+        color,
+        backgroundColor,
+        margin,
+        "--padding": padding,
+        "--fontSize": fontSize,
+      } as React.CSSProperties}
     >
       {text}
     </button>

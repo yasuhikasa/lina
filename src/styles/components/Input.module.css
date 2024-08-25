@@ -7,10 +7,11 @@
   font-size: 1rem;
 }
 
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
 .input {
   padding: 8px;
   margin-bottom: 15px;
-  font-size: 0.9rem; /* 小さいデバイス向けにフォントサイズを調整 */
+  font-size: 0.9rem;
 }
 }

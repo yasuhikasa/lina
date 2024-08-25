@@ -3,4 +3,15 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  padding: var(--padding, 0.75rem 1.5rem);
+  font-size: var(--fontSize, 1rem);
 }
+
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
+@media (max-width: 600px) {
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+

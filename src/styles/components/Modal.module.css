@@ -56,7 +56,7 @@
   background-color: #005bb5;
 }
 
-/* モバイル対応 */
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
   .modalContent {
     width: 95%;
