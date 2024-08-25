@@ -1,5 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { auth } from "@/libs/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Button from "@/components/button/button";
 import styles from "@/styles/Index.module.css";
 import { ReactNode } from "react";
@@ -12,6 +15,16 @@ interface IndexProps {
 
 const Index: NextPage<IndexProps> = ({ title, children }) => {
   const router = useRouter();
+  const [user, loading] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) {
+      // ユーザーがログインしている場合、postsページにリダイレクト
+      router.push("/posts");
+    }
+  }, [user, loading, router]);
+
 
   const navigateToSignup = () => {
     router.push("/signup");
