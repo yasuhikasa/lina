@@ -8,6 +8,7 @@ import Modal from '../components/modal/modal';
 import Header from '../components/header/header';
 import Button from '../components/button/button';
 import PostItem from '../components/posts/postItem';
+import Textarea from '../components/textarea/textarea';
 import styles from '../styles/Posts.module.css';
 import { NextPage } from "next";
 
@@ -121,12 +122,11 @@ const Post: NextPage = () => {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <form onSubmit={handleSubmit}>
-          <textarea
+          <Textarea
             placeholder="投稿内容"
             value={content}
             onChange={handleContentChange}
             maxLength={140}
-            className={modalStyles.textarea}
             required
           />
           <button type="submit" className={modalStyles.button}>投稿</button>

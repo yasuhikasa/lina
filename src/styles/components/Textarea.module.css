@@ -1,0 +1,10 @@
+.textarea {
+  width: 95%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1rem;
+  resize: vertical;
+}
