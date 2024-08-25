@@ -8,7 +8,8 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   width?: string;
-  checked?: boolean; // チェックボックス用
+  checked?: boolean;
+  name?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,6 +20,7 @@ const Input: React.FC<InputProps> = ({
   required = false,
   width = "100%",
   checked,
+  name,
 }) => {
   return (
     <input
@@ -30,6 +32,7 @@ const Input: React.FC<InputProps> = ({
       className={styles.input}
       style={{ width }}
       checked={checked}
+      name={name}
     />
   );
 };

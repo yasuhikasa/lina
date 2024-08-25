@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { useRouter } from "next/router";
 import { auth, db } from "../../libs/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -14,44 +14,78 @@ import Select from "../select/select";
 import FileInput from "../input/fileInput";
 import { NextPage } from "next";
 
-const Signup: NextPage = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
-  const [birthdate, setBirthdate] = useState<string>("");
-  const [gender, setGender] = useState<string>("");
-  const [profileIcon, setProfileIcon] = useState<File | null>(null);
-  const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false);
-  const [showPopup, setShowPopup] = useState<boolean>(false);
+interface SignupProps {
+  email: string;
+  password: string;
+  username: string;
+  birthdate: string;
+  gender: string;
+  profileIcon: File | null;
+  agreedToTerms: boolean;
+}
 
+const Signup: NextPage = () => {
+  const [formState, setFormState] = useState<SignupProps>({
+    email: "",
+    password: "",
+    username: "",
+    birthdate: "",
+    gender: "",
+    profileIcon: null,
+    agreedToTerms: false,
+  });
+
+  const [showPopup, setShowPopup] = useState<boolean>(false);
   const router = useRouter();
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setFormState({
+      ...formState,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleFileChange = (file: File | null) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      profileIcon: file,
+    }));
+  };
+
+  const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (password.length < 6) {
+    if (formState.password.length < 6) {
       alert("パスワードは6文字以上である必要があります。");
       return;
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formState.email,
+        formState.password
+      );
       const user = userCredential.user;
 
       let profileIconUrl = "";
-      if (profileIcon) {
+      if (formState.profileIcon) {
         const storageRef = ref(storage, `profileIcons/${user.uid}`);
-        await uploadBytes(storageRef, profileIcon);
+        await uploadBytes(storageRef, formState.profileIcon);
         profileIconUrl = await getDownloadURL(storageRef);
       }
 
       await setDoc(doc(db, "users", user.uid), {
-        username,
-        email,
-        birthdate,
-        gender,
+        username: formState.username,
+        email: formState.email,
+        birthdate: formState.birthdate,
+        gender: formState.gender,
         profileIconUrl,
-        agreedToTerms,
+        agreedToTerms: formState.agreedToTerms,
         createdAt: new Date(),
       });
 
@@ -61,7 +95,6 @@ const Signup: NextPage = () => {
         setShowPopup(false);
         router.push("/login");
       }, 2000);
-
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         alert("このメールアドレスはすでに使用されています。");
@@ -89,35 +122,39 @@ const Signup: NextPage = () => {
       <form onSubmit={handleSignup} className={styles.form}>
         <Input
           type="text"
+          name="username"
           placeholder="ユーザー名"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={formState.username}
+          onChange={handleInputChange}
           required
         />
         <Input
           type="email"
+          name="email"
           placeholder="メールアドレス"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={formState.email}
+          onChange={handleInputChange}
           required
         />
         <Input
           type="password"
+          name="password"
           placeholder="パスワード"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={formState.password}
+          onChange={handleInputChange}
           required
         />
         <Input
           type="date"
+          name="birthdate"
           placeholder="生年月日"
-          value={birthdate}
-          onChange={(e) => setBirthdate(e.target.value)}
+          value={formState.birthdate}
+          onChange={handleInputChange}
           required
         />
         <Select
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
+          value={formState.gender}
+          onChange={(value) => setFormState({ ...formState, gender: value })}
           options={[
             { value: "", label: "性別を選択" },
             { value: "male", label: "男性" },
@@ -126,16 +163,17 @@ const Signup: NextPage = () => {
           required
         />
         <FileInput
-          onChange={(file) => setProfileIcon(file)}
+          onChange={handleFileChange}
           accept="image/*"
           required
         />
         <label>
-        <Checkbox
-          checked={agreedToTerms}
-          onChange={(e) => setAgreedToTerms(e.target.checked)}
-          required
-        />
+          <Checkbox
+            name="agreedToTerms"
+            checked={formState.agreedToTerms}
+            onChange={handleInputChange}
+            required
+          />
           <span>
             <a
               href={TERMS_URL}
@@ -152,7 +190,8 @@ const Signup: NextPage = () => {
           text="サインアップ"
           type="submit"
           margin="1rem 0 0 0"
-          onClick={() =>handleSignup} />
+          onClick={() => handleSignup}
+        />
       </form>
       <p className={styles.loginText}>
         すでにアカウントをお持ちですか？{" "}
@@ -165,4 +204,3 @@ const Signup: NextPage = () => {
 };
 
 export default Signup;
-

@@ -11,7 +11,7 @@ import Textarea from '../textarea/textarea';
 import styles from '@/styles/Posts.module.css';
 import { NextPage } from "next";
 
-interface Post {
+interface PostsProps {
   id: string;
   content: string;
   uid: string;
@@ -23,7 +23,7 @@ interface Post {
 const Posts: NextPage = () => {
   const [user, loading] = useAuthState(auth); // ユーザー情報を取得、認証状態も確認
   const [content, setContent] = useState("");
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostsProps[]>([]);
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
@@ -75,7 +75,7 @@ const Posts: NextPage = () => {
     try {
       const postsQuery = query(collection(db, "posts"), orderBy("createdAt", "desc"));
       const postsData = await getDocs(postsQuery);
-      setPosts(postsData.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Post)));
+      setPosts(postsData.docs.map((doc) => ({ id: doc.id, ...doc.data() } as PostsProps)));
     } catch (error) {
       console.error("投稿の取得に失敗しました:", error);
     }

@@ -8,7 +8,7 @@ interface Option {
 
 interface SelectProps {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (value: string) => void;
   options: Option[];
   required?: boolean;
   className?: string;
@@ -21,10 +21,14 @@ const Select: React.FC<SelectProps> = ({
   required = false,
   className,
 }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange(e.target.value);
+  };
+
   return (
     <select
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       required={required}
       className={`${styles.select} ${className}`}
     >
