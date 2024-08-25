@@ -18,10 +18,8 @@ const Login: NextPage = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setShowPopup(true);
-      setTimeout(() => {
-        setShowPopup(false);
-        router.push("/posts");
-      }, 1000);
+      setShowPopup(false);
+      router.push("/posts");
     } catch (error) {
       console.error("ログインに失敗しました:", error);
       alert("ログインに失敗しました。");
@@ -36,11 +34,6 @@ const Login: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      {showPopup && (
-        <div className={styles.popup}>
-          <p>ログインが成功しました！</p>
-        </div>
-      )}
       <h1 className={styles.title}>ログイン</h1>
       <form onSubmit={handleLogin} className={styles.form}>
         <Input
