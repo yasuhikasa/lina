@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from '../styles/Posts.module.css';
 import modalStyles from '../styles/components/Modal.module.css';
 import Modal from '../components/modal/modal';
+import Header from '../components/header/header';
 
 interface Post {
   id: string;
@@ -95,6 +96,7 @@ const Post = () => {
 
   return (
     <div>
+      <Header />
       <button onClick={() => setShowModal(true)}>新規投稿</button>
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
