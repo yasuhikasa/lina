@@ -44,12 +44,12 @@ const Signup: NextPage = () => {
   useEffect(() => {
     // サインアップ中の場合は何もしない
     if (loading || isSigningUp) return;
-    // ユーザーがログインしている場合、postsページにリダイレクト
-    // サインアップ後もログイン状態になるため、ユーザーがいる場合はpostsページにリダイレクト
+    // ユーザーがログイン状態の場合、postsページにリダイレクト
+    // サインアップ完了後もログイン状態になるため、postsページにリダイレクト
     if (user) {
       setTimeout(() => {
         router.push("/posts");
-      }, 1500); // 1.5秒遅延させてから遷移
+      }, 1500); // 1.5秒遅延させてから遷移(ポップアップ表示のため)
     }
   }, [user, loading, isSigningUp, router]);
 
@@ -96,6 +96,7 @@ const Signup: NextPage = () => {
         profileIconUrl = await getDownloadURL(storageRef);
       }
 
+      // user.uidをドキュメントIDとしてusersコレクションにユーザー情報を保存
       await setDoc(doc(db, "users", user.uid), {
         username: formState.username,
         email: formState.email,
@@ -111,7 +112,7 @@ const Signup: NextPage = () => {
       setTimeout(() => {
         setShowPopup(false);
         setIsSigningUp(false);
-      }, 1000);
+      }, 1000); // 1秒後にポップアップを非表示にする
     } catch (error: any) {
       setIsSigningUp(false); // エラーが発生した場合はサインアップ状態を解除
       if (error.code === "auth/email-already-in-use") {

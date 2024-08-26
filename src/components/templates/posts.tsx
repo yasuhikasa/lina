@@ -97,6 +97,8 @@ const Posts: NextPage = () => {
     }
   };
 
+  // postId: 投稿ID, postUid: 投稿者のユーザーID
+  // 投稿者のユーザーIDとログインユーザーのユーザーIDが一致する場合のみ削除可能
   const handleDelete = async (postId: string, postUid: string) => {
     if (user?.uid !== postUid) {
       alert("他のユーザーの投稿を削除することはできません。");

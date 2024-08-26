@@ -14,12 +14,13 @@ interface IndexProps {
 
 const Index: NextPage<IndexProps> = ({ title, children }) => {
   const router = useRouter();
-  const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth); // ユーザーの認証状態を取得
 
   useEffect(() => {
     if (loading) return;
+    // userにはログインしているユーザー情報が入る
+    // ユーザーがログインしている場合、postsページにリダイレクト
     if (user) {
-      // ユーザーがログインしている場合、postsページにリダイレクト
       router.push("/posts");
     }
   }, [user, loading, router]);

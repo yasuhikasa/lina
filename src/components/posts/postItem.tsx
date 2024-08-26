@@ -32,6 +32,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, userUid, handleDelete }) => {
           />
           <p className={styles.username}>{post.username}</p>
         </div>
+        {/* ログインユーザーの投稿の場合のみ削除ボタンを表示 */}
         {userUid === post.uid && (
           <Button
             text="削除"

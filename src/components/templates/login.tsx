@@ -11,7 +11,7 @@ import { NextPage } from "next";
 const Login: NextPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth); // ユーザーの認証状態を取得
   const router = useRouter();
 
   useEffect(() => {
