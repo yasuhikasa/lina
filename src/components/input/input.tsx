@@ -10,6 +10,7 @@ interface InputProps {
   width?: string;
   checked?: boolean;
   name?: string;
+  maxLength?: number;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = ({
   width = "100%",
   checked,
   name,
+  maxLength,
 }) => {
   return (
     <input
@@ -33,6 +35,7 @@ const Input: React.FC<InputProps> = ({
       style={{ width }}
       checked={checked}
       name={name}
+      maxLength={maxLength}
     />
   );
 };

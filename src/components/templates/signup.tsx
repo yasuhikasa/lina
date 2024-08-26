@@ -144,6 +144,7 @@ const Signup: NextPage = () => {
           placeholder="ユーザー名"
           value={formState.username}
           onChange={handleInputChange}
+          maxLength={20}
           required
         />
         <Input
