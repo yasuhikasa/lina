@@ -19,6 +19,9 @@
 テストコード
 
 ・jest
+```bash
+npm test
+```
 
 ## vercelでデプロイ済み
 URL: https://luna-self.vercel.app/
