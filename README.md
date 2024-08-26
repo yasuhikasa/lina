@@ -1,6 +1,9 @@
 ## アプリの概要
 新規登録・ログインの機能があり、ログインしたユーザーのみが文章を投稿できるWebアプリ
 
+## アプリの仕様書（画面仕様書）
+https://docs.google.com/spreadsheets/d/1OgvUJpd_rcyU9YY--0bgzVJFcywfra9GcWqnZ-Rb4sY/edit?usp=sharing
+
 ## 使用技術
 フロントエンド
 
