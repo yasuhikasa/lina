@@ -29,3 +29,14 @@
   text-decoration: underline;
   font-size: 1rem;
 }
+
+/* レスポンシブ対応: 画面幅が600px以下の場合 */
+@media (max-width: 600px) {
+  .header {
+    justify-content: flex-start; /* 左寄せに変更 */
+  }
+  .username {
+    font-size: 0.9rem;
+    max-width: 160px;
+  }
+}

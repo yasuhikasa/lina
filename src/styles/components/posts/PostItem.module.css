@@ -66,5 +66,6 @@
 
   .username {
     font-size: 0.9rem;
+    max-width: 200px;
   }
 }
