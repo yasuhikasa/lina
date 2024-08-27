@@ -28,7 +28,7 @@ https://docs.google.com/spreadsheets/d/1OgvUJpd_rcyU9YY--0bgzVJFcywfra9GcWqnZ-Rb
 npm test
 ```
 
-## vercelでデプロイ済み
+## アプリのURL（vercelでデプロイ済み）
 
 URL: https://luna-self.vercel.app/
 
