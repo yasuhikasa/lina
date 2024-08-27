@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, ReactNode } from "react";
 import { auth } from "@/libs/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Button from "@/components/button/button";
+import Button from "@/components/parts/button/button";
 import styles from "@/styles/components/templates/Index.module.css";
 import { NextPage } from "next";
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "../../libs/firebaseConfig";
+import { auth, db } from "@/libs/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import styles from "@/styles/components/header/Header.module.css";
+import styles from "@/styles/components/parts/header/Header.module.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);

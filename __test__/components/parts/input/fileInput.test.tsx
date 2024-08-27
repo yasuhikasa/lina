@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import FileInput from "@/components/input/fileInput";
+import FileInput from "@/components/parts/input/fileInput";
 
 describe("FileInput Component", () => {
   it("ファイル入力フィールドが正しくレンダリングされることを確認する", () => {

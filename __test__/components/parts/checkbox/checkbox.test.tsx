@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Checkbox from "@/components/checkbox/checkbox";
+import Checkbox from "@/components/parts/checkbox/checkbox";
 
 describe("Checkbox Component", () => {
   it("チェックボックスが正しくレンダリングされることを確認する", () => {

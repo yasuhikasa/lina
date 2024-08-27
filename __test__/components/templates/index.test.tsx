@@ -12,7 +12,7 @@ jest.mock("react-firebase-hooks/auth", () => ({
   useAuthState: jest.fn(),
 }));
 
-jest.mock("@/components/button/button", () => {
+jest.mock("@/components/parts/button/button", () => {
   const MockButton = (props: any) => (
     <button onClick={props.onClick}>{props.text}</button>
   );

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Header from "@/components/header/header";
+import Header from "@/components/parts/header/header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "@/libs/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";

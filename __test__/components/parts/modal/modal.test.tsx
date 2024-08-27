@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Modal from "@/components/modal/modal";
+import Modal from "@/components/parts/modal/modal";
 
 describe("Modal Component", () => {
   it("モーダルが開いている場合、コンテンツが表示されることを確認する", () => {

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Input from "@/components/input/input";
+import Input from "@/components/parts/input/input";
 
 describe("Input Component", () => {
   it("入力フィールドが正しくレンダリングされることを確認する", () => {

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styles from "@/styles/components/input/Input.module.css";
+import styles from "@/styles/components/parts/input/Input.module.css";
 
 interface FileInputProps {
   onChange: (file: File | null) => void;

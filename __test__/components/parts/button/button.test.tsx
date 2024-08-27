@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Button from "@/components/button/button";
+import Button from "@/components/parts/button/button";
 
 describe("Button Component", () => {
   it("ボタンが正しくレンダリングされることを確認する", () => {

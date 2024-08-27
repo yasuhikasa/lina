@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/input/Input.module.css";
+import styles from "@/styles/components/parts/input/Input.module.css";
 
 interface InputProps {
   type: string;

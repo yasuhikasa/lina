@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Select from "@/components/select/select";
+import Select from "@/components/parts/select/select";
 
 describe("Select Component", () => {
   const mockOptions = [

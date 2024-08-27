@@ -12,11 +12,11 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Modal from "../modal/modal";
-import Header from "../header/header";
-import Button from "../button/button";
-import PostItem from "../posts/postItem";
-import Textarea from "../textarea/textarea";
+import Modal from "../parts/modal/modal";
+import Header from "../parts/header/header";
+import Button from "../parts/button/button";
+import PostItem from "../parts/posts/postItem";
+import Textarea from "../parts/textarea/textarea";
 import styles from "@/styles/components/templates/Posts.module.css";
 import { NextPage } from "next";
 

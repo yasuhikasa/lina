@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/button/Button.module.css";
+import styles from "@/styles/components/parts/button/Button.module.css";
 
 interface ButtonProps {
   text: string;
