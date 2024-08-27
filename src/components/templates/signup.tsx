@@ -7,7 +7,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../libs/firebaseConfig";
 import { TERMS_URL } from "../../libs/def";
-import styles from "@/styles/Signup.module.css";
+import styles from "@/styles/components/templates/Signup.module.css";
 import Input from "../input/input";
 import Button from "../button/button";
 import Checkbox from "../checkbox/checkbox";

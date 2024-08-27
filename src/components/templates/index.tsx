@@ -4,7 +4,7 @@ import { useEffect, ReactNode } from "react";
 import { auth } from "@/libs/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Button from "@/components/button/button";
-import styles from "@/styles/Index.module.css";
+import styles from "@/styles/components/templates/Index.module.css";
 import { NextPage } from "next";
 
 interface IndexProps {

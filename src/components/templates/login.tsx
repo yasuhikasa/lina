@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { auth } from "../../libs/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import styles from "../../styles/Login.module.css";
+import styles from "@/styles/components/templates/Login.module.css";
 import Button from "../button/button";
 import Input from "../input/input";
 import { NextPage } from "next";

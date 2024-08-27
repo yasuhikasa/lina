@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Button from "../button/button";
-import styles from "@/styles/components/PostItem.module.css";
+import styles from "@/styles/components/posts/PostItem.module.css";
 
 interface Post {
   id: string;

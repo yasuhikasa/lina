@@ -17,7 +17,7 @@ import Header from "../header/header";
 import Button from "../button/button";
 import PostItem from "../posts/postItem";
 import Textarea from "../textarea/textarea";
-import styles from "@/styles/Posts.module.css";
+import styles from "@/styles/components/templates/Posts.module.css";
 import { NextPage } from "next";
 
 interface PostsProps {

@@ -1,5 +1,5 @@
 import IndexTemplate from "@/components/templates/index";
-import styles from "@/styles/Index.module.css";
+import styles from "@/styles/pages/Index.module.css";
 import { NextPage } from "next";
 
 const IndexPage: NextPage = () => {

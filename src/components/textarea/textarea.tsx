@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/Textarea.module.css";
+import styles from "@/styles/components/textarea/Textarea.module.css";
 
 interface TextareaProps {
   placeholder: string;
