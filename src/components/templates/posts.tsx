@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { auth, db } from "../../libs/firebaseConfig";
+import { auth, db } from "@/libs/firebaseConfig";
 import {
   addDoc,
   collection,
@@ -12,11 +12,11 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Modal from "../parts/modal/modal";
-import Header from "../parts/header/header";
-import Button from "../parts/button/button";
-import PostItem from "../parts/posts/postItem";
-import Textarea from "../parts/textarea/textarea";
+import Modal from "@/components/parts/modal/modal";
+import Header from "@/components/parts/header/header";
+import Button from "@/components/parts/button/button";
+import PostItem from "@/components/parts/posts/postItem";
+import Textarea from "@/components/parts/textarea/textarea";
 import styles from "@/styles/components/templates/Posts.module.css";
 import { NextPage } from "next";
 

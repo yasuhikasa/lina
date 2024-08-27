@@ -5,14 +5,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { storage } from "../../libs/firebaseConfig";
-import { TERMS_URL } from "../../libs/def";
+import { storage } from "@/libs/firebaseConfig";
+import { TERMS_URL } from "@/libs/def";
 import styles from "@/styles/components/templates/Signup.module.css";
-import Input from "../parts/input/input";
-import Button from "../parts/button/button";
-import Checkbox from "../parts/checkbox/checkbox";
-import Select from "../parts/select/select";
-import FileInput from "../parts/input/fileInput";
+import Input from "@/components/parts/input/input";
+import Button from "@/components/parts/button/button";
+import Checkbox from "@/components/parts/checkbox/checkbox";
+import Select from "@/components/parts/select/select";
+import FileInput from "@/components/parts/input/fileInput";
 import { NextPage } from "next";
 
 interface SignupProps {

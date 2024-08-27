@@ -2,7 +2,6 @@ import { render, screen, waitFor } from "@testing-library/react";
 import Posts from "@/components/templates/posts";
 import mockRouter from "next-router-mock";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/libs/firebaseConfig";
 
 // Firebase hooks と next/router をモック
 jest.mock("react-firebase-hooks/auth", () => ({

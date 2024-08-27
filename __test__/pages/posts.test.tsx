@@ -1,6 +1,6 @@
 import PostsPage from "@/pages/posts";
 import mockRouter from "next-router-mock";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 jest.mock("next/router", () => require("next-router-mock"));

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "../../parts/button/button";
+import Button from "@/components/parts/button/button";
 import styles from "@/styles/components/parts/posts/PostItem.module.css";
 
 interface Post {

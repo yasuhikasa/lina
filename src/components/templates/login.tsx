@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { auth } from "../../libs/firebaseConfig";
+import { auth } from "@/libs/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import styles from "@/styles/components/templates/Login.module.css";
-import Button from "../parts/button/button";
-import Input from "../parts/input/input";
+import Button from "@/components/parts/button/button";
+import Input from "@/components/parts/input/input";
 import { NextPage } from "next";
 
 const Login: NextPage = () => {
