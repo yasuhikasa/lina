@@ -4,8 +4,8 @@ import { NextPage } from "next";
 
 const IndexPage: NextPage = () => {
   return (
-    <IndexTemplate title="コーディング試験アプリ">
-      <h1 className={styles.h1}>コーディング試験アプリ</h1>
+    <IndexTemplate title="文章投稿アプリ">
+      <h1 className={styles.h1}>文章投稿アプリ</h1>
     </IndexTemplate>
   );
 };
