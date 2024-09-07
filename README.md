@@ -32,6 +32,12 @@ npm test
 
 URL: https://luna-self.vercel.app/
 
+```bash
+テストアカウント（ご自由にお使いください）
+ユーザー名：78@hoge.co.jp
+パスワード：aaaaaa
+```
+
 ## 開発環境
 
 ```bash
